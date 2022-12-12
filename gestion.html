@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="gestion.css" rel="stylesheet" />
+</head>
+<body>
+<div id="home">
+    <form class="caractérisé">
+      <div class="info">
+        <p>Products Infos</p> 
+      </div>
+        <!-- caractérisé -->
+    <div id="form">
+      <div id="ps">
+        <div class="pos">
+       <input id="name" type="text" name="name" placeholder="Name" />
+        <select id="mark">
+        <option value="Mark">Mark</option>
+        <option value="Vichy">Vichy</option>
+        <option value="Bioderma">Bioderma</option>
+        <option value="Melvita">Melvita</option>
+        <option value="La roche posay">La roche posay</option>
+        </select>
+        </div>
+          <div class="pos">
+            <input id="price" type="text" name="price" placeholder="Price" />
+            <input id="date" type="date" name="date" placeholder="Date" />
+         </div>
+      </div>
+      <!-- liste déroulante -->
+      <div class="pos">
+        <div id="article">
+          <select name="article">   
+          <option value="Category" >Category</option>
+          <option value="beauty_care" >beauty care</option>
+          <option value="hygiene_and_toilet">hygiene and toilet</option>
+          <option value="beauty_care">beauty care</option>
+          <option value="solar_products">solar products</option>
+          <option value="beauty_of_hands_and_feet">beauty of hands and feet</option>
+          <option value="makeup_products">makeup products</option>
+          <option value="perfumes">Theater</option>
+          </select>
+        </div>
+<!-- sale -->
+        <div id="sale" class="pos">
+        <p>Is on promotion :</p>
+        <div class="inputS">
+          <input type="radio" name="sale" value="Yes"/>
+          <label for="yes">Yes</label>
+        </div>
+        <div class="inputS">
+          <input type="radio" name="sale" value="No" />
+          <label for="NO">NO</label>
+        </div>
+        </div>
+        </div>
+        <button id="add" type="button">Add</button>
+    </form>
+    </div>
+<div class="caractérisé">
+  <div class="info">
+    <p>inventory</p>
+  </div>
+
+    <table id="table">
+        <tr >
+          <th>name </th>
+          <th>Mark</th>
+          <th>price</th>
+          <th>date</th>
+          <th>Type</th>
+          <th>sale</th>
+          <th>Edit</th>  
+        </tr>
+                
+      </table>
+</div>
+</div>
+<script src="gestion.js"></script>
+</body>
+</html>
