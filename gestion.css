@@ -110,3 +110,17 @@ th{
   font-size: 2rem;
   font-weight: 400;
 }
+.error{
+  color: red;
+  display: none;
+}
+.invalid{
+  border-color: red !important;
+}
+.valid{
+  border-color: rgb(34, 161, 40) !important;
+}
+.show{
+  display: block !important;
+}
+

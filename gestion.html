@@ -18,6 +18,7 @@
       <div id="ps">
         <div class="pos">
        <input id="name" type="text" name="name" placeholder="Name" />
+       <p class="error" id="nameerror">The product name are character strings with a maximum length of 30</p>
         <select id="mark">
         <option value="Mark">Mark</option>
         <option value="Vichy">Vichy</option>
@@ -25,10 +26,13 @@
         <option value="Melvita">Melvita</option>
         <option value="La roche posay">La roche posay</option>
         </select>
+        <p class="error" id="markerror">Choose a brand</p>
         </div>
           <div class="pos">
             <input id="price" type="text" name="price" placeholder="Price" />
+            <p class="error" id="priceerror">price is invalid</p>
             <input id="date" type="date" name="date" placeholder="Date" />
+            <p class="error" id="dateerror">Choose the production date</p>
          </div>
       </div>
       <!-- liste déroulante -->
@@ -44,6 +48,7 @@
           <option value="makeup_products">makeup products</option>
           <option value="perfumes">Theater</option>
           </select>
+          <p class="error" id="categoryerror">Choose the category</p>
         </div>
 <!-- sale -->
         <div id="sale" class="pos">
@@ -57,6 +62,7 @@
           <label for="NO">NO</label>
         </div>
         </div>
+        <P class="error" id="saleerror">Is the product on sale? </P>
         </div>
         <button id="add" type="button">Add</button>
     </form>
@@ -67,7 +73,7 @@
   </div>
 
     <table id="table">
-        <tr >
+        <thead >
           <th>name </th>
           <th>Mark</th>
           <th>price</th>
@@ -75,8 +81,10 @@
           <th>Type</th>
           <th>sale</th>
           <th>Edit</th>  
-        </tr>
-                
+        </thead>
+        <tbody>
+
+        </tbody> 
       </table>
 </div>
 </div>
