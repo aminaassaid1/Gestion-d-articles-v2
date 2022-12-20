@@ -104,12 +104,23 @@ if (valide === true){
     let dateValue = document.getElementById("date").value
     let categoryValue = document.getElementById("article").value
     let saleValue = document.querySelector('[name=sale]:checked').value
+    data.sort(function compare(a, b) {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1;
+        }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1;
+        }
+       
+        return 0;
+      })
     data.push(new product(nameValue,priceValue,markValue,dateValue,categoryValue,saleValue));
     localStorage.data = JSON.stringify(data)
     create();
 
 }
 })
+
 function create(){
     document.querySelector("tbody").innerHTML = "";
             data.forEach(obje=>{
@@ -150,9 +161,9 @@ function create(){
                     document.getElementById("name").value= data[index].name
                     document.getElementById("price").value= data[index].price
                     document.getElementById("mark").value= data[index].mark
-                    document.getElementById("name").value= data[index].name
-                    document.getElementById("name").value= data[index].name
-
+                    document.getElementById("date").value= data[index].date
+                    document.getElementById("category").value= data[index].category
+                    document.getElementById("sale").value= data[index].sale
                 })
             })
     
