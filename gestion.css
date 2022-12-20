@@ -123,4 +123,7 @@ th{
 .show{
   display: block !important;
 }
-
+#modal {
+  border : none;
+  padding: 1rem;
+}

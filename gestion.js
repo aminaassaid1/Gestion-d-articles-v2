@@ -2,33 +2,31 @@ let name = document.getElementById('name')
 let price = document.getElementById('price')
 let mark = document.getElementById("mark")
 let date = document.getElementById("date")
-let category = document.getElementById("article")
+let category = document.querySelector('[name=article]');
 let sale = document.getElementById("sale")
 let nameRe = /^[a-z]{1,30}$/i;
 let priceRe = /^\d+$/
 let data;
-class product {
+let toedit;
+class Product {
     constructor(name , price , mark , date , category , sale ){
         this.name = name ;
         this.price = price ;
         this.mark = mark ;
         this.date = date ;
-        this.category = article ;
+        this.category = category ;
         this.sale = sale ;
-
 
     }
     details(){
-        return 
-        `
+        return  `
         <p>Name: ${this.name}</p>
         <p>Price: ${this.price}</p>
         <p>Mark: ${this.mark}</p>
         <p>Date: ${this.date}</p>
         <p>Category: ${this.category}</p>
         <p>Sale: ${this.sale}</p>
-        `
-        
+   `        
     }
 }
 if(localStorage.data === undefined){
@@ -80,7 +78,7 @@ if(document.getElementById('date').value==''){
     date.classList.add('valide')
     date.classList.remove('invalide')
 }
-if(document.getElementById('article').value=="Category"){
+if(document.querySelector('[name=article]').value=="Category"){
     valide=false
     document.getElementById('categoryerror').classList.add('show');
     category.classList.add('invalide')
@@ -102,8 +100,13 @@ if (valide === true){
     let priceValue = document.getElementById('price').value
     let markValue =document.getElementById("mark").value
     let dateValue = document.getElementById("date").value
-    let categoryValue = document.getElementById("article").value
+    let categoryValue = document.querySelector('[name=article]').value;
     let saleValue = document.querySelector('[name=sale]:checked').value
+
+    let product = new Product(nameValue,priceValue,markValue,dateValue,categoryValue,saleValue);
+    document.getElementById("modal").showModal();
+    document.querySelector('.modal-content').innerHTML = product.details()
+    data.push(product);
     data.sort(function compare(a, b) {
         if (a.name.toLowerCase() < b.name.toLowerCase()) {
           return -1;
@@ -114,7 +117,6 @@ if (valide === true){
        
         return 0;
       })
-    data.push(new product(nameValue,priceValue,markValue,dateValue,categoryValue,saleValue));
     localStorage.data = JSON.stringify(data)
     create();
 
@@ -125,7 +127,7 @@ function create(){
     document.querySelector("tbody").innerHTML = "";
             data.forEach(obje=>{
                 let tr = document.createElement("tr")
-               let thisData = [obje.name,obje.price,obje.mark,obje.date,obje.article,obje.sale]
+               let thisData = [obje.name,obje.price,obje.mark,obje.date,obje.category,obje.sale]
                for (let index = 0; index < 6; index++) {
                 let td = document.createElement("td");
                 td.innerHTML =thisData[index]
@@ -156,17 +158,27 @@ function create(){
             })
             document.querySelectorAll(".edit").forEach(button=>{
                 button.addEventListener("click",Event=>{
-                    
                     let index = Array.from(document.querySelector("tbody").children).indexOf(Event.target.parentElement.parentElement)
                     document.getElementById("name").value= data[index].name
                     document.getElementById("price").value= data[index].price
                     document.getElementById("mark").value= data[index].mark
                     document.getElementById("date").value= data[index].date
-                    document.getElementById("category").value= data[index].category
+                    document.querySelector('[name=article]').value = data[index].category
                     document.getElementById("sale").value= data[index].sale
                 })
             })
     
 }
 
-    
+document.getElementById('close').addEventListener('click',event=>{
+    document.getElementById('modal').close();
+})
+
+document.getElementById("editer").addEventListener("click",function(){
+    toedit.children[0].innerHTML = document.getElementById("name").value;
+    toedit.children[1].innerHTML = document.getElementById("mark").value;
+    toedit.children[2].innerHTML = document.getElementById("price").value;
+    toedit.children[3].innerHTML = document.getElementById("date").value;
+    toedit.children[4].innerHTML = document.getElementById("category").value;
+    toedit.children[5].innerHTML = document.querySelector("[type=radio]:checked").value;
+})
